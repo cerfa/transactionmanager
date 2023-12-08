@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<property name="LOGS" value="/home/api/transaction/log" />
+
+	<appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern >
+				   %(%d{ISO8601}) %(%-5level) [%(%t)] %(%C{1.}): %msg%n%throwable
+			</Pattern>
+	    </encoder>
+	</appender>
+
+	<appender name="RollingFile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOGS}/transaction.log</file>
+		<encoder
+			class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>%d %p %C{1.} [%t] %m%n</Pattern>
+		</encoder>
+
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- rollover daily and when the file reaches 10 MegaBytes -->
+			<fileNamePattern>${LOGS}/archived/transaction-%d{yyyy-MM-dd}.%i.log
+			</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+	</appender>
+	<logger name="org.springframework" level="INFO" />
+    <logger name="reghub.report" level="INFO" />
+
+	<springProfile name="PRO">
+		<root level="info">
+			<appender-ref ref="RollingFile" />
+			<appender-ref ref="Console" />
+		</root>
+	</springProfile>
+	<springProfile name="DEV,COL">
+		<root level="info">
+			<appender-ref ref="RollingFile" />
+			<appender-ref ref="Console" />
+		</root>
+	</springProfile>
+	<springProfile name="LOCAL">
+		<root level="info">
+			<appender-ref ref="RollingFile" />
+			<appender-ref ref="Console" />
+		</root>
+	</springProfile> 
+</configuration>

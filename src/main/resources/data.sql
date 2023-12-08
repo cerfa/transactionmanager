@@ -1,0 +1,8 @@
+CREATE SCHEMA IF NOT EXISTS DBACCT;
+DROP TABLE IF EXISTS DBACCT.TRANSCATIONS;
+
+CREATE TABLE DBACCT.TRANSCATIONS(ID INT AUTO_INCREMENT  PRIMARY KEY,
+                           CUSTOMER_ID varchar(16),
+                           AMOUNT DECIMAL(20, 2),
+                           TIMESTAMP TIME
+                           );
