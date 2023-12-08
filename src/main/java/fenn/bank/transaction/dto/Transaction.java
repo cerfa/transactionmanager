@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 
 public class Transaction {
 	private String customerId;
+	private String accountId;
 	private Integer transactionId;
 	private BigDecimal amount;
 	private Timestamp timeStamp;	
@@ -40,5 +41,10 @@ public class Transaction {
 	public void setTransactionId(Integer transactionId) {
 		this.transactionId = transactionId;
 	}
-	
+	public String getAccountId() {
+		return accountId;
+	}
+	public void setAccountId(String accountId) {
+		this.accountId = accountId;
+	}
 }

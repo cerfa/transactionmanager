@@ -20,21 +20,15 @@ public class Transactions {
 	@GeneratedValue
 	@Column
 	private Integer id;
+	private String accountId;
 	private String customerId;
 	private BigDecimal amount;
 	private Timestamp timeStamp;
 
 
 	public Transactions() {
+		// Just for the sake of sonar.
 	}
- 
-
-	public Transactions(String customerId, BigDecimal amount, Timestamp timeStamp) {
-		this.customerId = customerId;
-		this.amount = amount;
-		this.timeStamp = timeStamp;
-	}
-
 
 	public BigDecimal getAmount() {
 		return amount;
@@ -57,6 +51,12 @@ public class Transactions {
 	}
 	public void setCustomerId(String customerId) {
 		this.customerId = customerId;
+	}
+	public String getAccountId() {
+		return accountId;
+	}
+	public void setAccountId(String accountId) {
+		this.accountId = accountId;
 	}
 
 	public Timestamp getTimeStamp() {

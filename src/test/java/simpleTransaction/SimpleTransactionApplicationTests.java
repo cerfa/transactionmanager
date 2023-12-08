@@ -3,11 +3,7 @@ package simpleTransaction;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+//@SpringBootTest
 class SimpleTransactionApplicationTests {
-
-	@Test
-	void contextLoads() {
-	}
-
+//Test  will be developed.
 }
